@@ -52,7 +52,7 @@ module Guard
     def shutdown_redis
       return UI.info "No instance of Redis to stop." unless pid
       return UI.info "Redis (#{pid}) was already stopped." unless process_running?
-      Redis.current.disconnect!
+      ::Redis.current.disconnect!
       UI.info "Sending TERM signal to Redis (#{pid})..."
       Process.kill("TERM", pid)
 
